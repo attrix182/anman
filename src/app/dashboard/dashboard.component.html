@@ -14,7 +14,7 @@
         <input type="text" formControlName="url" placeholder="URL" class="form-control" />
       </div>
 
-      <div class="col-12 mt-3">
+      <div class="col-12 mt-3" *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT'">
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
       </div>
 
