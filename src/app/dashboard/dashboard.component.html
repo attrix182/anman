@@ -26,9 +26,11 @@
 </div>
 
 <div class="container" *ngIf="response">
-  <h6 class="mt-2">{{ response | json }}</h6>
+  <ngx-json-viewer [json]="response"></ngx-json-viewer>
+
 </div>
 
 <div class="container" *ngIf="responseError">
-  <h6 style="color:red" class="mt-2">{{ responseError | json }}</h6>
+  <ngx-json-viewer style="color:red" [json]="responseError"></ngx-json-viewer>
+  
 </div>

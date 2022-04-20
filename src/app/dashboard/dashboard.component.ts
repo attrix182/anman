@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -86,6 +85,8 @@ export class DashboardComponent implements OnInit {
         this.delete(url, token);
         break;
     }
+
+
   }
 
   inicializarForm() {
