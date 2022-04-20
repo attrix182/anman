@@ -1,0 +1,30 @@
+<div class="card container mt-5 p-4">
+  <div [formGroup]="form">
+    <div class="row">
+      <div class="col-3">
+        <select name="method" id="" class="form-control" (change)="changeMethod($event)">
+          <option *ngFor="let option of methods">{{ option }}</option>
+        </select>
+      </div>
+
+      <div class="col-9">
+        <input type="text" formControlName="token" placeholder="TOKEN" class="form-control" />
+      </div>
+      <div class="col-12 mt-3">
+        <input type="text" formControlName="url" placeholder="URL" class="form-control" />
+      </div>
+
+      <div class="col-12 mt-3">
+        <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
+      </div>
+
+      <div class="col-12 mt-3">
+        <button class="btn btn-primary btn-block" (click)="processRequest()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h6 class="mt-2">{{ response | json }}</h6>
+</div>
