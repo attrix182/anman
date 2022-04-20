@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   public form: FormGroup;
 
   public response: any;
+  public responseError: any;
 
   public methods = ['GET', 'POST', 'PUT', 'DELETE'];
 
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
     },
     (error) => {
       console.log(error);
-      this.response = error;
+      this.responseError = error;
     });
 
   }
@@ -62,6 +63,8 @@ export class DashboardComponent implements OnInit {
   }
 
   processRequest() {
+    this.response = "";
+    this.responseError = "";
     console.log(this.form.value);
 
     let url = this.form.get('url').value;
