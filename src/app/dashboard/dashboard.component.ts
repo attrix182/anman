@@ -91,9 +91,9 @@ export class DashboardComponent implements OnInit {
   inicializarForm() {
     this.form = this.FB.group({
       url: new FormControl('', [Validators.required]),
-      token: new FormControl('', [Validators.required]),
+      token: new FormControl(),
       method: new FormControl('', [Validators.required]),
-      body: new FormControl('', [Validators.required])
+      body: new FormControl()
     });
   }
 }

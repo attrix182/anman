@@ -19,14 +19,14 @@
       </div>
 
       <div class="col-12 mt-3">
-        <button class="btn btn-primary btn-block" (click)="processRequest()">Enviar</button>
+        <button class="btn btn-primary btn-block" (click)="processRequest()" [disabled]="form.invalid">Enviar</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="card mt-2 container" *ngIf="response || responseError">
-  <div class="header">Response:</div>
+  <div class="header"></div>
   <div class="container" *ngIf="response">
     <ngx-json-viewer [json]="response"></ngx-json-viewer>
   </div>
