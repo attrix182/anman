@@ -25,12 +25,13 @@
   </div>
 </div>
 
-<div class="container" *ngIf="response">
-  <ngx-json-viewer [json]="response"></ngx-json-viewer>
+<div class="card mt-2 container" *ngIf="response || responseError">
+  <div class="header">Response:</div>
+  <div class="container" *ngIf="response">
+    <ngx-json-viewer [json]="response"></ngx-json-viewer>
+  </div>
 
-</div>
-
-<div class="container" *ngIf="responseError">
-  <ngx-json-viewer style="color:red" [json]="responseError"></ngx-json-viewer>
-  
+  <div class="container" *ngIf="responseError">
+    <ngx-json-viewer [json]="responseError"></ngx-json-viewer>
+  </div>
 </div>

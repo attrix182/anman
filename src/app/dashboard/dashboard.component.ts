@@ -8,7 +8,6 @@ import { ApiService } from '../api.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   public form: FormGroup;
 
   public response: any;
@@ -20,20 +19,20 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.inicializarForm();
-    this.form.controls['method'].setValue("GET");
+    this.form.controls['method'].setValue('GET');
   }
 
   get(url: string, token?: any) {
-    return this.apiSVC.get(url, token).subscribe((data) => {
-      this.response = data;
-      console.log(data);
-
-    },
-    (error) => {
-      console.log(error);
-      this.responseError = error;
-    });
-
+    return this.apiSVC.get(url, token).subscribe(
+      (data) => {
+        this.response = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+        this.responseError = error;
+      }
+    );
   }
 
   post(url: string, body?: any, token?: any) {
@@ -62,13 +61,15 @@ export class DashboardComponent implements OnInit {
   }
 
   processRequest() {
-    this.response = "";
-    this.responseError = "";
-    console.log(this.form.value);
+    this.response = '';
+    this.responseError = '';
 
     let url = this.form.get('url').value;
     let token = this.form.get('token').value;
+
     let body = this.form.get('body').value;
+
+
     let method = this.form.get('method').value;
 
     switch (method) {
@@ -85,8 +86,6 @@ export class DashboardComponent implements OnInit {
         this.delete(url, token);
         break;
     }
-
-
   }
 
   inicializarForm() {
