@@ -7,15 +7,46 @@
         </select>
       </div>
 
-      <div class="col-9">
-        <input type="text" formControlName="token" placeholder="TOKEN" class="form-control" />
+      <div class="row">
+        <div class="col-6">
+          <input type="text" formControlName="tokenRC" placeholder="TOKEN RC" class="form-control" />
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="tokenAPIM" placeholder="TOKEN APIM" class="form-control" />
+        </div>
       </div>
       <div class="col-12 mt-3">
         <input type="text" formControlName="url" placeholder="URL" class="form-control" />
       </div>
 
-      <div class="col-12 mt-3" *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT'">
+      <div
+        class="col-12 mt-3"
+        *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT'"
+      >
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
+        <h5 class="text-center mt-2">---------------- O ------------------</h5>
+        <div class="row">
+          <div class="col-4 mt-3">
+            <input type="text" formControlName="key" placeholder="Campo" class="form-control" />
+          </div>
+          <div class="col-8 mt-3">
+            <button class="btn btn-primary" (click)="addField()">+</button>
+          </div>
+        </div>
+
+        <div *ngFor="let key of fields">
+          <div class="row">
+            <div class="col-4 mt-3">
+              <input type="text" placeholder="key" [value]="key" class="form-control" disabled />
+            </div>
+            <div class="col-6 mt-3">
+              <input type="text" placeholder="Value" formControlName="value" class="form-control" />
+            </div>
+            <div class="col-2 mt-3">
+              <button class="btn btn-danger btn-block" (click)="removeField(campo)">-</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-12 mt-3">
