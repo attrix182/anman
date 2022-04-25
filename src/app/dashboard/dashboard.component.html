@@ -24,9 +24,10 @@
         *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT'"
       >
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
-        <h5 class="text-center mt-2">---------------- O ------------------</h5>
-        <div class="row">
-          <div class="col-4 mt-3">
+
+        <div class="row" *ngIf="false"> 
+          <h5 class="text-center mt-2">---------------- O ------------------</h5 >
+          <div class="col-4 mt-3" >
             <input type="text" formControlName="key" placeholder="Campo" class="form-control" />
           </div>
           <div class="col-8 mt-3">
