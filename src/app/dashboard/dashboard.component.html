@@ -7,14 +7,16 @@
         </select>
       </div>
 
-      <div class="row">
-        <div class="col-6">
+     
+        <div class="col-12 mt-2">
           <input type="text" formControlName="tokenRc" placeholder="TOKEN RC" class="form-control" />
         </div>
-        <div class="col-6">
+
+        <div class="col-12 mt-2">
           <input type="text" formControlName="tokenApim" placeholder="TOKEN APIM" class="form-control" />
         </div>
-      </div>
+ 
+
       <div class="col-12 mt-3">
         <input type="text" formControlName="url" placeholder="URL" class="form-control" />
       </div>
@@ -25,8 +27,7 @@
       >
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
 
-        <div class="row" *ngIf="false"> 
-          <h5 class="text-center mt-2">---------------- O ------------------</h5 >
+        <div class="row" *ngIf="false">
           <div class="col-4 mt-3" >
             <input type="text" formControlName="key" placeholder="Campo" class="form-control" />
           </div>
