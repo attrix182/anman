@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
   }
 
   processRequest() {
-    this.formatJsonRequest();
+
 
     this.response = '';
     this.responseError = '';
@@ -114,8 +114,8 @@ export class DashboardComponent implements OnInit {
   inicializarForm() {
     this.form = this.FB.group({
       url: new FormControl('', [Validators.required]),
-      tokenRC: new FormControl(),
-      tokenAPIM: new FormControl(),
+      tokenRc: new FormControl(),
+      tokenApim: new FormControl(),
       method: new FormControl('', [Validators.required]),
       body: new FormControl(),
       key: new FormControl(),
