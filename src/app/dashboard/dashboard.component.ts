@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   public fields: any[] = [];
   public bodyJson = {};
   public profiles: Profile;
-  public showProfiles: boolean = true;
+  public showProfiles: boolean = false;
 
   constructor(private apiSVC: ApiService, private FB: FormBuilder) {}
 
