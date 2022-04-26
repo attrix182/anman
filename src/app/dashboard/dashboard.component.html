@@ -1,21 +1,21 @@
 <div class="card container mt-5 p-4">
   <div [formGroup]="form">
     <div class="row">
-      <div class="col-3">
-        <select name="method" id="" class="form-control" (change)="changeMethod($event)">
+      <div class="col-4">
+        <select name="method" class="form-control" (change)="changeMethod($event)">
           <option *ngFor="let option of methods">{{ option }}</option>
         </select>
       </div>
+      <div class="col-8 btn-perfiles">
+        <button class="btn btn-info" (click)="toggleProfiles()">Perfiles</button>
+      </div>
+      <div class="col-12 mt-2">
+        <input type="text" formControlName="tokenRc" placeholder="TOKEN RC" class="form-control" />
+      </div>
 
-     
-        <div class="col-12 mt-2">
-          <input type="text" formControlName="tokenRc" placeholder="TOKEN RC" class="form-control" />
-        </div>
-
-        <div class="col-12 mt-2">
-          <input type="text" formControlName="tokenApim" placeholder="TOKEN APIM" class="form-control" />
-        </div>
- 
+      <div class="col-12 mt-2">
+        <input type="text" formControlName="tokenApim" placeholder="TOKEN APIM" class="form-control" />
+      </div>
 
       <div class="col-12 mt-3">
         <input type="text" formControlName="url" placeholder="URL" class="form-control" />
@@ -28,7 +28,7 @@
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
 
         <div class="row" *ngIf="false">
-          <div class="col-4 mt-3" >
+          <div class="col-4 mt-3">
             <input type="text" formControlName="key" placeholder="Campo" class="form-control" />
           </div>
           <div class="col-8 mt-3">
@@ -67,4 +67,16 @@
   <div class="container" *ngIf="responseError">
     <ngx-json-viewer [json]="responseError"></ngx-json-viewer>
   </div>
+</div>
+
+<div class="card container mt-3 p-4" *ngIf="showProfiles">
+  <div [formGroup]="form" class="row">
+    <div class="col-4">
+      <button class="btn btn-primary" (click)="saveProfile()">Guardar</button>
+    </div>
+  </div>
+
+  <div class="list-group mt-2"></div>
+  <h6>Pulsa para cargarlo</h6>
+  <a *ngIf="profiles" (click)="loadProfile()" class="list-group-item list-group-item-action noCursor">{{ profiles.url }}</a>
 </div>

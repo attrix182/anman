@@ -1,3 +1,13 @@
 .card{
     background-color: rgb(248, 241, 241);
 }
+
+.btn-perfiles{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.noCursor{
+    user-select: none;
+    cursor: pointer;
+}

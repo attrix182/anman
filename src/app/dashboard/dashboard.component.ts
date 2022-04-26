@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 
+export interface Profile {
+  url: string;
+  method: string;
+  body: string;
+  tokenRc: string;
+  tokenApim: string;
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,12 +23,28 @@ export class DashboardComponent implements OnInit {
   public methods = ['GET', 'POST', 'PUT', 'DELETE'];
   public fields: any[] = [];
   public bodyJson = {};
+  public profiles: Profile;
+  public showProfiles: boolean = true;
 
   constructor(private apiSVC: ApiService, private FB: FormBuilder) {}
 
   ngOnInit(): void {
     this.inicializarForm();
     this.form.controls['method'].setValue('GET');
+    this.getProfile();
+  }
+
+  toggleProfiles() {
+    this.showProfiles = !this.showProfiles;
+  }
+
+  loadProfile() {
+    this.form.controls['url'].setValue(this.profiles.url);
+    this.form.controls['tokenRc'].setValue(this.profiles.tokenRc);
+    this.form.controls['tokenApim'].setValue(this.profiles.tokenApim);
+
+
+
   }
 
   get(url: string, token?: any, tokenApim?: any) {
@@ -62,8 +86,6 @@ export class DashboardComponent implements OnInit {
   }
 
   processRequest() {
-
-
     this.response = '';
     this.responseError = '';
 
@@ -90,25 +112,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  addField() {
-    if (this.form.get('key').value == null) return;
-    this.fields.push(this.form.get('key').value);
+  saveProfile() {
+    this.profiles = {
+      url: this.form.get('url').value,
+      tokenRc: this.form.get('tokenRc').value,
+      tokenApim: this.form.get('tokenApim').value,
+      body: this.form.get('body').value,
+      method: this.form.get('method').value
+    };
+
+    localStorage.setItem('profile', JSON.stringify(this.profiles));
   }
 
-  formatJsonRequest() {
-    this.bodyJson = {};
-
-    let value = this.form.get('value').value;
-    console.log(value);
-
-    this.fields.forEach((key) => {
-      this.bodyJson += ` ${key}: '' ,`;
-    });
-    console.log(this.bodyJson);
-  }
-
-  removeField(field) {
-    this.fields.splice(this.fields.indexOf(field), 1);
+  getProfile() {
+    this.profiles = JSON.parse(localStorage.getItem('profile'));
   }
 
   inicializarForm() {
@@ -119,7 +136,8 @@ export class DashboardComponent implements OnInit {
       method: new FormControl('', [Validators.required]),
       body: new FormControl(),
       key: new FormControl(),
-      value: new FormControl()
+      value: new FormControl(),
+      nameProfile: new FormControl()
     });
   }
 }
