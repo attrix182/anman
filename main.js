@@ -16,16 +16,14 @@ createWindow = () => {
     
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
-    appWin.setMenu(null);
-
-    appWin.webContents.openDevTools();
-
-    appWin.menuBarVisible = true;
 
     appWin.on("closed", () => {
         appWin = null;
     });
 }
+
+
+
 
 app.on("ready", createWindow);
 
