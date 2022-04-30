@@ -24,7 +24,7 @@
 
       <div
         class="col-12 mt-3"
-        *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT'"
+        *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT' || this.form.get('method').value == 'DELETE'"
       >
         <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
 

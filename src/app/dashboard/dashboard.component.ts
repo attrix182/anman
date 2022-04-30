@@ -74,8 +74,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  delete(url: string, token?: any, tokenApim?: any) {
-    return this.apiSVC.delete(url, token, tokenApim).subscribe((data) => {
+  delete(url: string, body:any, token?: any, tokenApim?: any) {
+    return this.apiSVC.delete(url, body, token, tokenApim).subscribe((data) => {
       this.response = data;
       console.log(data);
     });
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit {
         this.put(url, body, token, tokenApim);
         break;
       case 'DELETE':
-        this.delete(url, token, tokenApim);
+        this.delete(url, body, token, tokenApim);
         break;
     }
   }
