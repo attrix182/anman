@@ -1,5 +1,4 @@
 <div class="card container mt-5 p-4">
-  <h6>Ctrl + Shift + i -> Para abrir dev tools</h6>
   <div [formGroup]="form">
     <div class="row">
       <div class="col-4">
@@ -7,7 +6,10 @@
           <option *ngFor="let option of methods">{{ option }}</option>
         </select>
       </div>
-      <div class="col-8 btn-perfiles">
+      <div class="col-2">
+       <button class="btn btn-info" (click)="resetForm()">Limpiar</button>
+      </div>
+      <div class="col-6 btn-perfiles">
         <button class="btn btn-info" (click)="toggleProfiles()">Perfil</button>
       </div>
       <div class="col-12 mt-2">
@@ -24,10 +26,22 @@
 
       <div
         class="col-12 mt-3"
-        *ngIf="this.form.get('method').value == 'POST' || this.form.get('method').value == 'PUT' || this.form.get('method').value == 'DELETE'"
+        *ngIf="
+          this.form.get('method').value == 'POST' ||
+          this.form.get('method').value == 'PUT' ||
+          this.form.get('method').value == 'DELETE' 
+        "
       >
-        <textarea type="text" formControlName="body" placeholder="BODY" class="form-control"></textarea>
+        <textarea type="text" *ngIf="!img" formControlName="body" placeholder="BODY" class="form-control"></textarea>
 
+        <div *ngIf="this.form.get('method').value == 'POST'">
+          <div class="mt-2 upload-file">
+            <input type="file" id="imgInput" (change)="onFileChanged($event)" formControlName="image" />
+          </div>
+          <div class="mt-2" *ngIf="img">
+            <button class="btn btn-info" (click)="removeImg()">Eliminar imagen</button>
+          </div>
+        </div>
         <div class="row" *ngIf="false">
           <div class="col-4 mt-3">
             <input type="text" formControlName="key" placeholder="Campo" class="form-control" />
@@ -53,7 +67,12 @@
       </div>
 
       <div class="col-12 mt-3">
-        <button class="btn btn-primary btn-block" (click)="processRequest()" [disabled]="form.invalid">Enviar</button>
+        <button class="btn btn-primary btn-block" [disabled]="isLoading" (click)="processRequest()" [disabled]="form.invalid">
+   
+          <div class="spinner-border text-dark" role="status" *ngIf="isLoading">
+          </div>
+          <div *ngIf="!isLoading">Enviar</div>
+        </button>
       </div>
     </div>
   </div>
@@ -79,5 +98,7 @@
 
   <div class="list-group mt-2"></div>
   <h6>Pulsa para cargarlo</h6>
-  <a *ngIf="profiles" (click)="loadProfile()" class="list-group-item list-group-item-action noCursor">{{ profiles.url }}</a>
+  <a *ngIf="profiles" (click)="loadProfile()" class="list-group-item list-group-item-action noCursor">{{
+    profiles.url
+  }}</a>
 </div>
