@@ -1,17 +1,22 @@
 Aplicacion web desarrollada en angular para probar endpoints
 
-deploy link: https://anman.netlify.app/
+Deploy link: https://anman.netlify.app/
 
-Para ejecutar en local:
+Para ejecutar en local (Navegador):
 
 npm i
 
 ng serve
 
 -------------
-En rama: https://github.com/attrix182/anman/tree/anman-electron
+
+Para ejecutar como programa:
+
+En rama: https://bitbucket.org/lsinisterra/anman-app/src/anman-electron/
 
 npm run electron -> Ejecuta la app en modo desarrollo
+
+Para compilar un .exe
 
 npx electron-packager ./ -> Genera una carpeta con un .exe
 
