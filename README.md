@@ -12,7 +12,7 @@ ng serve
 
 Para ejecutar como programa:
 
-En rama: https://bitbucket.org/lsinisterra/anman-app/src/anman-electron/
+En rama: anman-electron
 
 npm run electron -> Ejecuta la app en modo desarrollo
 
